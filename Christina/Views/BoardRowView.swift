@@ -37,7 +37,8 @@ struct BoardRowView: View {
         max_comment_chars: nil,
         bump_limit: nil,
         image_limit: nil,
-        meta_description: "He said &quot;Hello&quot; &amp; waved — 5 &lt; 10 &amp;&amp; 10 &gt; 5. It&#39;s fine &apos;indeed&apos;."
+        meta_description:
+            "He said &quot;Hello&quot; &amp; waved — 5 &lt; 10 &amp;&amp; 10 &gt; 5. It&#39;s fine &apos;indeed&apos;."
     )
     return BoardRowView(board: sample)
         .padding()

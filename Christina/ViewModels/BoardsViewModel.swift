@@ -22,11 +22,11 @@ final class BoardsViewModel {
     @MainActor
     func load() async {
         if isLoading { return }
-        
+
         isLoading = true
         errorMessage = nil
         defer { isLoading = false }
-        
+
         do {
             let boards = try await client.fetchBoards()
             self.boards = boards.sorted { $0.board < $1.board }

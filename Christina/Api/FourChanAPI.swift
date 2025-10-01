@@ -4,9 +4,9 @@
 //  Created by sh0n0 on 2025/10/01.
 //
 
+import Alamofire
 import Foundation
 import Moya
-import Alamofire
 
 enum FourChanAPI {
     case boards
@@ -26,14 +26,14 @@ extension FourChanAPI: TargetType {
 
     var task: Task { .requestPlain }
 
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         ["Accept": "application/json"]
     }
 }
 
 class FourChanClient {
     private let provider = MoyaProvider<FourChanAPI>()
-    
+
     func fetchBoards() async throws -> [Board] {
         let response = try await provider.asyncRequest(.boards)
         let decoded = try JSONDecoder().decode(BoardsResponse.self, from: response.data)

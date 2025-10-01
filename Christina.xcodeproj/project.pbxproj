@@ -12,6 +12,7 @@
 		6976106D2E8D201C009ED03E /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 6976106C2E8D201C009ED03E /* ReactiveMoya */; };
 		6976106F2E8D201C009ED03E /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 6976106E2E8D201C009ED03E /* RxMoya */; };
 		697610D42E8D4EBC009ED03E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 697610D32E8D4EBC009ED03E /* .gitignore */; };
+		697611A52E8D58D8009ED03E /* .swift-format in Resources */ = {isa = PBXBuildFile; fileRef = 697611A42E8D58D8009ED03E /* .swift-format */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		697610992E8D4E82009ED03E /* ChristinaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChristinaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		697610A32E8D4E82009ED03E /* ChristinaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChristinaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		697610D32E8D4EBC009ED03E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		697611A42E8D58D8009ED03E /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-format"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -93,6 +95,7 @@
 				697610A62E8D4E82009ED03E /* ChristinaUITests */,
 				6976108D2E8D4E80009ED03E /* Products */,
 				697610D32E8D4EBC009ED03E /* .gitignore */,
+				697611A42E8D58D8009ED03E /* .swift-format */,
 			);
 			sourceTree = "<group>";
 		};
@@ -233,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				697611A52E8D58D8009ED03E /* .swift-format in Resources */,
 				697610D42E8D4EBC009ED03E /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
