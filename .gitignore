@@ -1,0 +1,10 @@
+xcuserdata/
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+*.ipa
+*.zip
+Build
+swiftlint.log
+.DS_Store
