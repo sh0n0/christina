@@ -10,6 +10,7 @@ import Moya
 
 enum FourChanAPI {
     case boards
+    case catalog(board: String)
 }
 
 extension FourChanAPI: TargetType {
@@ -19,6 +20,8 @@ extension FourChanAPI: TargetType {
         switch self {
         case .boards:
             return "/boards.json"
+        case .catalog(let board):
+            return "/\(board)/catalog.json"
         }
     }
 
@@ -31,13 +34,24 @@ extension FourChanAPI: TargetType {
     }
 }
 
-class FourChanClient {
+protocol FourChanClientProtocol {
+    func fetchBoards() async throws -> [Board]
+    func fetchThreads(board: String) async throws -> [ChanThread]
+}
+
+final class FourChanClient: FourChanClientProtocol {
     private let provider = MoyaProvider<FourChanAPI>()
 
     func fetchBoards() async throws -> [Board] {
         let response = try await provider.asyncRequest(.boards)
         let decoded = try JSONDecoder().decode(BoardsResponse.self, from: response.data)
         return decoded.boards
+    }
+
+    func fetchThreads(board: String) async throws -> [ChanThread] {
+        let response = try await provider.asyncRequest(.catalog(board: board))
+        let decoded = try JSONDecoder().decode([CatalogResponse].self, from: response.data)
+        return decoded.flatMap { $0.threads }
     }
 }
 

@@ -20,8 +20,12 @@ struct BoardsView: View {
                     }
                 } else {
                     List(viewModel.boards) { board in
-                        BoardRowView(board: board)
-                            .padding(.vertical, 4)
+                        NavigationLink {
+                            ThreadsView(board: board)
+                        } label: {
+                            BoardRowView(board: board)
+                                .padding(.vertical, 4)
+                        }
                     }
                     .refreshable {
                         await viewModel.load()

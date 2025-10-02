@@ -1,21 +1,23 @@
 //
-//  BoardsViewModel.swift
+//  ThreadsViewModel.swift
 //
-//  Created by sh0n0 on 2025/10/01.
+//  Created by sh0n0 on 2025/10/02.
 //
 
 import Foundation
 import Observation
 
 @Observable
-final class BoardsViewModel {
+final class ThreadsViewModel {
     private let client: FourChanClientProtocol
+    let board: Board
 
-    init(client: FourChanClientProtocol = FourChanClient()) {
+    init(board: Board, client: FourChanClientProtocol = FourChanClient()) {
+        self.board = board
         self.client = client
     }
 
-    var boards: [Board] = []
+    var threads: [ChanThread] = []
     var isLoading: Bool = false
     var errorMessage: String?
 
@@ -28,8 +30,10 @@ final class BoardsViewModel {
         defer { isLoading = false }
 
         do {
-            let boards = try await client.fetchBoards()
-            self.boards = boards.sorted { $0.board < $1.board }
+            let items = try await client.fetchThreads(board: board.board)
+            self.threads = items.sorted { (lhs, rhs) in
+                (lhs.last_modified ?? 0) > (rhs.last_modified ?? 0)
+            }
         } catch {
             self.errorMessage = (error as NSError).localizedDescription
         }
