@@ -38,6 +38,7 @@
 		697610A32E8D4E82009ED03E /* ChristinaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChristinaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		697610D32E8D4EBC009ED03E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		697611A42E8D58D8009ED03E /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-format"; sourceTree = "<group>"; };
+		697C23DE2E8EAE9C00E8646E /* ci.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = ci.yml; path = .github/workflows/ci.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -90,6 +91,7 @@
 		697610832E8D4E80009ED03E = {
 			isa = PBXGroup;
 			children = (
+				697C23DE2E8EAE9C00E8646E /* ci.yml */,
 				6976108E2E8D4E80009ED03E /* Christina */,
 				6976109C2E8D4E82009ED03E /* ChristinaTests */,
 				697610A62E8D4E82009ED03E /* ChristinaUITests */,
