@@ -18,7 +18,7 @@ struct PostsView: View {
                 }
             } else {
                 List(viewModel.posts) { post in
-                    PostRowView(post: post)
+                    PostRowView(post: post, board: viewModel.board)
                         .padding(.vertical, 6)
                 }
                 .listStyle(.plain)
