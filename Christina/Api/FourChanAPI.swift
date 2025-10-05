@@ -1,9 +1,3 @@
-//
-//  FourChanAPI.swift
-//
-//  Created by sh0n0 on 2025/10/01.
-//
-
 import Alamofire
 import Foundation
 import Moya

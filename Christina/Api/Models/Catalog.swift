@@ -1,9 +1,3 @@
-//
-//  Catalog.swift
-//
-//  Created by sh0n0 on 2025/10/02.
-//
-
 import Foundation
 
 struct CatalogResponse: Decodable {

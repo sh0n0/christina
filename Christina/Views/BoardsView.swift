@@ -1,9 +1,3 @@
-//
-//  BoardsView.swift
-//
-//  Created by sh0n0 on 2025/09/30.
-//
-
 import SwiftUI
 
 struct BoardsView: View {
