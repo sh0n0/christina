@@ -23,8 +23,12 @@ struct ThreadsView: View {
                 }
             } else {
                 List(viewModel.threads) { thread in
-                    ThreadRowView(thread: thread)
-                        .padding(.vertical, 6)
+                    NavigationLink {
+                        PostsView(board: viewModel.board, thread: thread)
+                    } label: {
+                        ThreadRowView(thread: thread)
+                            .padding(.vertical, 6)
+                    }
                 }
                 .refreshable {
                     await viewModel.load()

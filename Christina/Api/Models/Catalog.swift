@@ -26,3 +26,18 @@ struct ChanThread: Decodable, Identifiable, Hashable {
     let sticky: Int?
     let closed: Int?
 }
+
+extension ChanThread {
+    func navigationTitle() -> String {
+        if let sub = self.sub, !sub.isEmpty {
+            return sub
+        }
+        if let com = self.com?.htmlDecoded, !com.isEmpty {
+            let lines = com.split(separator: "\n", omittingEmptySubsequences: true)
+            if let first = lines.first {
+                return String(first)
+            }
+        }
+        return "Thread #\(self.no)"
+    }
+}

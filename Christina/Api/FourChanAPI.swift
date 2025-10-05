@@ -11,6 +11,7 @@ import Moya
 enum FourChanAPI {
     case boards
     case catalog(board: String)
+    case thread(board: String, no: Int)
 }
 
 extension FourChanAPI: TargetType {
@@ -22,6 +23,8 @@ extension FourChanAPI: TargetType {
             return "/boards.json"
         case .catalog(let board):
             return "/\(board)/catalog.json"
+        case .thread(let board, let no):
+            return "/\(board)/thread/\(no).json"
         }
     }
 
@@ -37,6 +40,17 @@ extension FourChanAPI: TargetType {
 protocol FourChanClientProtocol {
     func fetchBoards() async throws -> [Board]
     func fetchThreads(board: String) async throws -> [ChanThread]
+    func fetchPosts(board: String, threadNo: Int) async throws -> [Post]
+}
+
+enum FourChanClientError: Error {
+    case notImplemented
+}
+
+extension FourChanClientProtocol {
+    func fetchPosts(board: String, threadNo: Int) async throws -> [Post] {
+        throw FourChanClientError.notImplemented
+    }
 }
 
 final class FourChanClient: FourChanClientProtocol {
@@ -52,6 +66,12 @@ final class FourChanClient: FourChanClientProtocol {
         let response = try await provider.asyncRequest(.catalog(board: board))
         let decoded = try JSONDecoder().decode([CatalogResponse].self, from: response.data)
         return decoded.flatMap { $0.threads }
+    }
+
+    func fetchPosts(board: String, threadNo: Int) async throws -> [Post] {
+        let response = try await provider.asyncRequest(.thread(board: board, no: threadNo))
+        let decoded = try JSONDecoder().decode(PostsResponse.self, from: response.data)
+        return decoded.posts
     }
 }
 
