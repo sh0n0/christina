@@ -18,16 +18,9 @@ struct Post: Decodable, Identifiable, Hashable {
 }
 
 extension Post {
-    /// Thumbnail URL for this post's attachment on a given board.
-    /// 4chan thumbnail URL: https://i.4cdn.org/{board}/{tim}s.jpg
-    func thumbnailURL(board: Board) -> URL? {
-        guard let tim = self.tim else { return nil }
-        return URL(string: "https://i.4cdn.org/\(board.board)/\(tim)s.jpg")
-    }
-
     /// Full image URL for this post's attachment on a given board.
     /// 4chan full image URL: https://i.4cdn.org/{board}/{tim}{ext}
-    func fullImageURL(board: Board) -> URL? {
+    func imageURL(board: Board) -> URL? {
         guard let tim = self.tim, let ext = self.ext else { return nil }
         return URL(string: "https://i.4cdn.org/\(board.board)/\(tim)\(ext)")
     }

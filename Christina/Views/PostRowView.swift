@@ -6,7 +6,9 @@ struct PostRowView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            PostImageView(post: post, board: board)
+            if let imageUrl = post.imageURL(board: board) {
+                PostImageView(imageURL: imageUrl)
+            }
 
             Text(post.com?.htmlDecoded ?? "")
                 .font(.body)
